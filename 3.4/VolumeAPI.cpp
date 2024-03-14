@@ -225,7 +225,7 @@ bool VolumeAPI::saveFileToData(FILE*& fp, VolumeInfo*& v, vector<char>& fatTable
 		FILE* source = nullptr;
 		errno_t err = fopen_s(&source, sourcePath.c_str(), "rb+");
 		if (err == EINVAL) {
-			cout << "Cant open file\n";
+			cout << "	Cant open file\n";
 			return false;
 		}
 		size_t size = sizeOfFile(source);
@@ -274,7 +274,7 @@ bool VolumeAPI::deleteFile(FILE* fp, VolumeInfo* v, vector<char>& fatTable, stri
 
 	string pw;
 	cin.ignore();
-	cout << "Nhap mat khau file can xoa: "; getline(cin, pw);
+	cout << "	Input file's password: "; getline(cin, pw);
 	if (!e->checkPassword(pw))
 		return false;
 
@@ -320,7 +320,7 @@ bool VolumeAPI::exportFile(FILE* fp, VolumeInfo* v, const vector<char>& fatTable
 		return false;
 
 	string pw;
-	cout << "Nhap mat khau file/folder can export: "; getline(cin, pw);
+	cout << "	Input file's password to export: "; getline(cin, pw);
 	if (!exportingEntry->checkPassword(pw))
 		return false;
 
@@ -340,7 +340,7 @@ bool VolumeAPI::exportFile(FILE* fp, VolumeInfo* v, const vector<char>& fatTable
 		}
 		int err = _mkdir(outputPath.c_str());
 		if (err != 0) {
-			cout << "Cannot create folder\n";
+			cout << "	Cannot create folder\n";
 			return false;
 		}
 		s.push(exportingEntry);
@@ -362,7 +362,7 @@ bool VolumeAPI::exportFile(FILE* fp, VolumeInfo* v, const vector<char>& fatTable
 					outputPath = targetPath + "\\" + parentPath + path.substr(path.find_last_of("\\"));
 					int err = _mkdir(outputPath.c_str());
 					if (err != 0) {
-						cout << "Cannot create folder\n";
+						cout << "	Cannot create folder\n";
 						return false;
 					}
 					s.push(subEntryList[i]);

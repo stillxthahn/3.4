@@ -1,8 +1,6 @@
-//tam thoi dung quan tam toi entry table.
 #include <iostream>
 #include <stdio.h>
 #include <Windows.h>
-
 #include"VolumeInfo.h"
 #include"Entry.h"
 #include<string>
